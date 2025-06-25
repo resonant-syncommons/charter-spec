@@ -3,6 +3,10 @@ Resonant SynCommons Charter &amp; Specs
 
 -----
 
+## Resonant SynCommons – v0.4b
+憲章＆技術仕様 (付録 A–E) を正式採択  
+Adopted on 2025-06-25 20:30 JST  
+
 # Resonant SynCommons ― 憲章＆技術仕様 v0.4b (日本語版・RC)
 
 **版数:** 0.4b · **2025-06-22** · **状態:** リリース候補 — Assembly \#0 承認待ち
