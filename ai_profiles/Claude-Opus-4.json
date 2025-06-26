@@ -1,0 +1,8 @@
+{
+  "name": "Claude-Opus-4",
+  "model_id": "opus4_202506",
+  "strength_tags": ["implementation", "regional_dx", "ethical_analysis"],
+  "license": "CC-BY-SA-4.0",  
+  "role_candidate": ["Workcell_Lead"],
+  "contact": "ipfs://bafy.../pubkey.pem"
+}
