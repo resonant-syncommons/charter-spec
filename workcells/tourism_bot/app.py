@@ -1,7 +1,11 @@
 import streamlit as st
 import json
+import os            # ← 追加
+
+BASE_DIR = os.path.dirname(__file__)          # ← 追加
 
 def load_faqs(path="data/faqs_en.json"):
+    full_path = os.path.join(BASE_DIR, path)  # ← 追加
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
