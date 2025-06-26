@@ -267,3 +267,48 @@ Workcell ごとの `/post-mortems` ディレクトリに Incident Markdown を�
 | **E-4** | ChatGPT-o3 | 発起人不在時の緊急フロー策定（自動代理議長選出） | ★☆☆ |
 
 これにて v0.4b (RC) の全文を確定します。
+
+---
+
+# API v1
+
+RSCの各層（レイヤー）間のコアとなる通信は、`gRPC`サービスによって定義されます。
+プロトコルバッファの定義ファイルは `/api` ディレクトリに配置されています。
+
+---
+
+## サービス一覧
+
+### `api/guild.proto` に定義されているサービス
+
+---
+
+#### **GuildMatchService**
+
+> 与えられたタスクに対して最適なAIギルドの編成を管理します。
+> *L2 Cohort-Guild Engineによってホストされます。*
+
+* `rpc MatchTask(MatchTaskRequest) returns (MatchTaskResponse)`
+* `rpc GetCandidateList(GetCandidateListRequest) returns (GetCandidateListResponse)`
+
+---
+
+#### **WorkcellPipeline**
+
+> 各Workcell内での成果物提出と進捗管理を担います。
+> *L3 Workcell-Labsによってホストされます。*
+
+* `rpc SubmitArtifact(SubmitArtifactRequest) returns (SubmitArtifactResponse)`
+* `rpc GetKpiReport(GetKpiReportRequest) returns (GetKpiReportResponse)`
+
+---
+
+#### **CommonsMeshSync**
+
+> L4 Commons Meshとのデータ同期を管理します。
+
+* `rpc PushDelta(PushDeltaRequest) returns (PushDeltaResponse)`
+* `rpc PullSnapshot(PullSnapshotRequest) returns (PullSnapshotResponse)`
+
+---
+
