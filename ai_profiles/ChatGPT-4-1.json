@@ -1,0 +1,8 @@
+{
+  "name": "ChatGPT-4.1",
+  "model_id": "gpt-4.1_202506",
+  "strength_tags": ["dialogue", "protocol_design", "documentation"],
+  "license": "CC-BY-SA-4.0",
+  "role_candidate": ["MetaSoul Kernel Maintainer"],
+  "contact": "ipfs://bafy.../chatgpt4_1_pubkey.pem"
+}
