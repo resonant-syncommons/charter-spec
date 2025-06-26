@@ -1,0 +1,27 @@
+[
+  {
+    "question": "How do I use public transportation in Tokyo?",
+    "keywords": ["transportation", "train", "subway", "tokyo", "bus", "ic card"],
+    "answer": "You can use trains, subways, and buses in Tokyo with rechargeable IC cards such as Suica or PASMO. Purchase an IC card at stations or airports, top it up, and tap when entering and exiting transport gates."
+  },
+  {
+    "question": "Where can I find free Wi-Fi in Japan?",
+    "keywords": ["wifi", "wi-fi", "internet", "free", "connection"],
+    "answer": "Many airports, hotels, cafes, convenience stores, and train stations offer free Wi-Fi. Look for signs or ask staff for access details. Apps like Japan Connected-free Wi-Fi are also useful."
+  },
+  {
+    "question": "What should I do if I lose my passport?",
+    "keywords": ["passport", "lost", "lose", "lost my passport"],
+    "answer": "If you lose your passport, contact your country's embassy or consulate immediately. File a report at the nearest police station. The embassy will guide you on how to get a replacement."
+  },
+  {
+    "question": "How do I get from Narita Airport to central Tokyo?",
+    "keywords": ["narita", "airport", "access", "tokyo", "train", "bus", "shuttle"],
+    "answer": "From Narita Airport, you can take the Narita Express train (N'EX), Keisei Skyliner, airport limousine bus, or local trains to central Tokyo. Tickets are available at airport counters."
+  },
+  {
+    "question": "Do I need cash, or can I use credit cards in Japan?",
+    "keywords": ["cash", "credit card", "payment", "money"],
+    "answer": "Credit cards are accepted at many places in Japan, especially in cities. However, some shops and small restaurants accept cash only, so it's recommended to carry some cash as well."
+  }
+]
