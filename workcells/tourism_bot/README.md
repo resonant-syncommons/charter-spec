@@ -1,5 +1,7 @@
 # Japan Tourism Info Bot (Alpha)
 
+**Live demo → <https://tourism-bot-alpha.onrender.com>**
+
 A simple FAQ chatbot for Japan travel information, powered by Streamlit.
 
 [![Deploy on Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
