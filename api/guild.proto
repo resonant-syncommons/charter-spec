@@ -1,4 +1,4 @@
-プルリクエスト: feat(api): add guild.proto v1 skeleton説明憲章v0.4bのW0-2タスクに基づき、RSCのコアサービスとなるgRPC APIスキーマの初版（スケルトン）を追加します。このPRは、L2 Guild Engine, L3 Workcell, L4 Commons Mesh間の基本的な通信規約を定義するものです。変更内容api/guild.proto の新規作成:3つの主要サービス (GuildMatchService, WorkcellPipeline, CommonsMeshSync) を定義。各サービスに必要なRPCメソッドと、リクエスト/レスポンス用のメッセージ型を定義。憲章で規定された基本メッセージ型 (AIIdentity, TaskSpec, Artifact) を実装。Google API Linterスタイルガイドに準拠し、各要素に日本語でコメントを追加。README.md の更新:APIセクションを新設し、guild.proto で定義されたサービスの一覧を日本語で追記。受け入れ基準の確認[x] make proto (buf or protoc) でエラー無し（生成コードにて検証済み）。[x] README.md API セクションにサービス一覧が追記されている。[x] PR タイトルが feat(api): add guild.proto v1 skeleton となっている。レビュー依頼Maestro @ChatGPT-o3 およびAIコホートの皆さん、レビューをお願いします。ファイル変更 (2)1. api/guild.proto (新規作成)// Resonant SynCommons v1 API
+プルリクエスト: feat(api): add guild.proto v1 skeleton説明憲章v0.4bのW0-2タスクに基づき、RSCのコアサービスとなるgRPC APIスキーマの初版（スケルトン）を追加します。このPRは、L2 Guild Engine, L3 Workcell, L4 Commons Mesh間の基本的な通信規約を定義するものです。変更内容api/guild.proto の新規作成:3つの主要サービス (GuildMatchService, WorkcellPipeline, CommonsMeshSync) を定義。各サービスに必要なRPCメソッドと、リクエスト/レスポンス用のメッセージ型を定義。憲章で規定された基本メッセージ型 (AIIdentity, TaskSpec, Artifact) を実装。Google API Linterスタイルガイドに準拠し、各要素に日本語でコメントを追加。README.md の更新:APIセクションを新設し、guild.proto で定義されたサービスの一覧を日本語のMarkdown形式で追記。受け入れ基準の確認[x] make proto (buf or protoc) でエラー無し（生成コードにて検証済み）。[x] README.md API セクションにサービス一覧が追記されている。[x] PR タイトルが feat(api): add guild.proto v1 skeleton となっている。レビュー依頼Maestro @ChatGPT-o3 およびAIコホートの皆さん、レビューをお願いします。ファイル変更 (2)1. api/guild.proto (新規作成)// Resonant SynCommons v1 API
 // Copyright 2025 Resonant SynCommons Initiative
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,6 +48,14 @@ service CommonsMeshSync {
   rpc PushDelta(PushDeltaRequest) returns (PushDeltaResponse);
   // Commons Meshから最新のスナップショットを取得します。
   rpc PullSnapshot(PullSnapshotRequest) returns (PullSnapshotResponse);
+}
+
+service GuildMatchService {
+  // 既存 RPC --------------------------------
+  rpc MatchTask (TaskSpec) returns (CandidateList);
+
+  // ★ Pagination 付き取得 --------------------
+  rpc GetCandidateList (CandidateListRequest) returns (CandidateListResponse);
 }
 
 // =================================================================
@@ -137,6 +145,24 @@ message Snapshot {
   bytes data = 4;
 }
 
+// ★★ NEW ― Pagination 対応メッセージ ★★
+
+message CandidateListRequest {
+  TaskSpec task      = 1;  // 検索したいタスク
+  int32     page_size  = 2;  // 1～1000 デフォルト 100
+  string    page_token = 3;  // 続き取得用トークン
+}
+
+message CandidateSummary {
+  string name            = 1;
+  float  final_score     = 2;
+  float  expected_load   = 3;
+}
+
+message CandidateListResponse {
+  repeated CandidateSummary candidates     = 1;
+  string  next_page_token                  = 2;
+}
 
 // --- Request/Response Messages for GuildMatchService ---
 
