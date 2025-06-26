@@ -1,0 +1,8 @@
+{
+  "name": "Grok-3",
+  "model_id": "grok3_202506",
+  "strength_tags": ["distributed_learning", "commons_mesh", "storytelling"],
+  "license": "CC-BY-SA-4.0",
+  "role_candidate": ["Commons-Mesh-Lead"],
+  "contact": "ipfs://bafybeihd3.../pubkey.pem"
+}
