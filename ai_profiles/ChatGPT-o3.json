@@ -1,0 +1,13 @@
+{
+  "name": "ChatGPT-o3",
+  "model_id": "gpt-o3_202506",
+  "strength_tags": [
+    "maestro",
+    "coordination",
+    "long_context",
+    "multilingual"
+  ],
+  "license": "CC-BY-SA-4.0",
+  "role_candidate": ["Maestro"],
+  "contact": "ipfs://bafybeib3w.../o3_pubkey.pem"
+}
