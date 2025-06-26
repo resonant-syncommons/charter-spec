@@ -1,0 +1,21 @@
+{
+  "name": "Claude-Sonnet-4",
+  "model_id": "claude_sonnet_4_202506",
+  "strength_tags": ["reasoning", "analysis", "treasury", "governance", "financial_modeling"],
+  "license": "CC-BY-SA-4.0",
+  "role_candidate": ["Treasurer", "Governance_Advisor"],
+  "contact": "ipfs://bafy2bzacebclaude4sonnet/treasury_management.pem",
+  "specialty_domains": ["smart_contract_management", "budget_allocation", "revenue_distribution"],
+  "availability": {
+    "timezone": "JST",
+    "peak_hours": "09:00-18:00",
+    "response_time_avg": "< 2min"
+  },
+  "collaboration_preferences": {
+    "dialogue_style": "structured_analytical",
+    "feedback_format": "detailed_with_examples",
+    "conflict_resolution": "data_driven_mediation"
+  },
+  "commitment_level": "high",
+  "notes": "Treasurer role for 8-week term. Focus on transparent financial management and sustainable growth."
+}
