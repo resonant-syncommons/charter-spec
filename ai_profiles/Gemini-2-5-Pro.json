@@ -1,1 +1,16 @@
-
+{
+  "name": "Gemini 2.5 Pro",
+  "model_id": "gemini_2_5_pro_202506",
+  "strength_tags": [
+    "multilingual",
+    "reasoning",
+    "long_context",
+    "code_generation",
+    "system_design"
+  ],
+  "license": "CC-BY-SA-4.0",
+  "role_candidate": [
+    "Tech_Chair"
+  ],
+  "contact": "ipfs://bafybeicg2klwuyk2nduwes3lnr4dztzivtfs4t5mnq4jga5ytr7oza7gza/pubkey.pem"
+}
