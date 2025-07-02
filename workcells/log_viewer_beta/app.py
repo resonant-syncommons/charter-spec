@@ -4,6 +4,7 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
+from kernel.lite_panel import load_latest
 
 # ページ設定
 st.set_page_config(
@@ -79,9 +80,13 @@ with col2:
 # Column C: Kernel温度メーター + KPIパネル
 with col3:
     st.markdown("### Kernel Temp Meter")
-    for metric, value in [("Aggressive Vocab", kpi_df["Aggressive_Vocab"].iloc[-1]),
-                          ("Emotion Surge", kpi_df["Emotion_Surge"].iloc[-1]),
-                          ("Bias Score", kpi_df["Bias_Score"].iloc[-1])]:
+
+    # 最新メトリクスを lite_metrics.json から取得
+    latest = load_latest()
+
+    for metric, value in [("Aggressive Vocab", latest["aggressive"]),
+                          ("Emotion Surge", latest["emotion"]),
+                          ("Bias Score", latest["bias"])]:
         color = "green" if value < 0.5 else "yellow" if value < 1.0 else "red"
         st.markdown(
             f"""
