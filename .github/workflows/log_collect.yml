@@ -1,0 +1,62 @@
+# .github/workflows/log_collect.yml
+name: 日次メトリクス収集 (Nightly Metrics Collector)
+
+on:
+  # スケジュール実行
+  schedule:
+    # 毎日 00:00 JST (前日の15:00 UTC) に実行
+    - cron: '0 15 * * *'
+  
+  # 手動実行
+  # GitHubリポジトリのActionsタブから手動でこのワークフローを実行可能にします。
+  workflow_dispatch:
+
+jobs:
+  collect-and-commit:
+    name: メトリクス収集とコミット
+    runs-on: ubuntu-latest
+
+    # このワークフローがリポジトリにコミットするために必要な権限
+    permissions:
+      contents: write
+
+    steps:
+      # ステップ1: リポジトリのコードをチェックアウト
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      # ステップ2: Python環境をセットアップ
+      - name: Python 3.9 をセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      # ステップ3: 必要なライブラリをインストール
+      - name: 依存関係をインストール
+        run: pip install numpy
+
+      # ステップ4: メトリクス収集スクリプトを実行
+      # W3-2で作成したシミュレーションスクリプトを実行します。
+      # このスクリプトはリポジトリのルートに 'metrics.json' を生成します。
+      - name: Guild Match シミュレーションを実行
+        run: python tests/run_metrics.py
+
+      # ステップ5: 結果ファイルを指定のパスに移動
+      # 生成された 'metrics.json' を 'tests/latest_metrics.json' として移動します。
+      - name: 結果ファイルをリネームして移動
+        run: |
+          mkdir -p tests
+          mv metrics.json tests/latest_metrics.json
+
+      # ステップ6: 変更を自動でコミット
+      # 'tests/latest_metrics.json' に変更があった場合のみ、新しいコミットを作成します。
+      - name: メトリクスファイルをコミット
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(metrics): nightly refresh"
+          file_pattern: "tests/latest_metrics.json"
+          # コミット者情報をボットとして明記
+          commit_user_name: "RSC Bot"
+          commit_user_email: "bot@resonant-syncommons.org"
+          commit_author: "RSC Bot <bot@resonant-syncommons.org>"
+
