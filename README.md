@@ -307,6 +307,8 @@ RSCの各層（レイヤー）間のコアとなる通信は、`gRPC`サービ�
 
 > L4 Commons Meshとのデータ同期を管理します。
 
+**Live Demo**: https://log-viewer-beta-rplctyze9nsbqvvmqp4ys5.streamlit.app
+
 * `rpc PushDelta(PushDeltaRequest) returns (PushDeltaResponse)`
 * `rpc PullSnapshot(PullSnapshotRequest) returns (PullSnapshotResponse)`
 
