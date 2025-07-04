@@ -70,6 +70,7 @@ with col1:
 
 # Column B: Poetic summary + ハイライト要約
 with col2:
+    st.write("🟢 COL2 REACHED")          # 画面にこの文字が出れば ColumnB は実行中
     st.warning("👀 ここが先頭です – この行が見えるか確認")
     st.code(poetic_summary(dialogue_df.rename(columns={"Text": "content"})))
 
