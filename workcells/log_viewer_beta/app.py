@@ -5,6 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from kernel.lite_panel import load_latest
+from poetic_summary import poetic_summary
 
 # ページ設定
 st.set_page_config(
@@ -64,8 +65,15 @@ with col1:
             unsafe_allow_html=True
         )
 
-# Column B: ハイライト要約
+# Column B: Poetic summary + ハイライト要約
 with col2:
+    # --- ✨ 詩的要約を先頭に表示 -----------------
+    poetic = poetic_summary(dialogue_df)          # dialogue_df は既存変数を流用
+    st.markdown("*Today's poetic summary…*")
+    st.markdown(poetic)
+    st.markdown("---")                            # 区切り線（お好みで）
+
+    # --- 既存の Highlight Summary -------------
     st.markdown("### Highlight Summary")
     for h in highlights[:5]:
         st.markdown(
