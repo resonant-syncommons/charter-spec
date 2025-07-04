@@ -68,6 +68,9 @@ with col1:
 
 # Column B: Poetic summary + ハイライト要約
 with col2:
+    st.warning("👀 ここが先頭です – この行が見えるか確認")
+    st.code(poetic_summary(dialogue_df.rename(columns={"Text": "content"})))
+
     # --- ✨ 詩的要約 -----------------
     dialogue_df = dialogue_df.rename(columns={"Text": "content"})   # content 列を用意
     poetic = poetic_summary(dialogue_df)
