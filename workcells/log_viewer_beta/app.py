@@ -6,6 +6,8 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from kernel.lite_panel import load_latest
 from poetic_summary import poetic_summary
+import sys
+print("🔥 DEBUG-POEM:", poetic_summary(pd.DataFrame({"content": ["hello", "world"]})), file=sys.stderr)
 
 # ページ設定
 st.set_page_config(
