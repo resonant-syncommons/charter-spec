@@ -68,6 +68,7 @@ with col1:
 # Column B: Poetic summary + ハイライト要約
 with col2:
     # --- ✨ 詩的要約を先頭に表示 -----------------
+    dialogue_df = dialogue_df.rename(columns={"Text": "content"})
     poetic = poetic_summary(dialogue_df)          # dialogue_df は既存変数を流用
     st.markdown("*Today's poetic summary…*")
     st.markdown(poetic)
