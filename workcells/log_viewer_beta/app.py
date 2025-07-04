@@ -42,6 +42,7 @@ def generate_dummy_data():
     return pd.DataFrame(data), pd.DataFrame(dialogue_data), highlights
 
 kpi_df, dialogue_df, highlights = generate_dummy_data()
+dialogue_df = dialogue_df.rename(columns={"Text": "content"})
 
 # トップバー
 st.title("Resonant SynCommons - Assembly Log Viewer β")
