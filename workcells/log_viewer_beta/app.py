@@ -67,31 +67,22 @@ with col1:
 
 # Column B: Poetic summary + ハイライト要約
 with col2:
-    # --- ✨ Poetic summary ▶ 先頭に表示 -----------------
-    poetic = poetic_summary(dialogue_df.rename(columns={"Text": "content"}))
-
+    # --- 詩的要約 ----------------------------
     st.markdown("### Poetic Summary")
+    poetic = poetic_summary(dialogue_df.rename(columns={"Text":"content"}).copy())
     st.markdown(
-        f"""
-        <div style='background:#ffffff10;padding:16px;border-radius:8px;
-                    font-style:italic;line-height:1.6;'>
-            {poetic}
-        </div>
-        """,
+        f"<p style='color:#DDDDDD; font-style:italic; "
+        "background:#2A2A2A; padding:10px; border-radius:8px;'>"
+        f"{poetic}</p>",
         unsafe_allow_html=True
     )
-    st.markdown("---")  # ↓既存の Highlight Summary につなげる
-
-    # --- 既存の Highlight Summary -------------
     st.markdown("### Highlight Summary")
     for h in highlights[:5]:
         st.markdown(
-            f"""
-            <div style='background-color: #2A2A2A; padding: 12px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);'>
-                <strong>{h['Type']}</strong>: {h['Content']}
-            </div>
-            """,
-            unsafe_allow_html=True
+            f\"\"\"<div style='background:#2A2A2A; padding:12px; border-radius:8px;
+                        margin-bottom:12px; box-shadow:0 1px 4px rgba(0,0,0,.08);'>
+                    <strong>{h['Type']}</strong>: {h['Content']}
+                    </div>\"\"\", unsafe_allow_html=True
         )
 
 # Column C: Kernel温度メーター + KPIパネル
