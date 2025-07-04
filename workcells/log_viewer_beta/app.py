@@ -67,12 +67,20 @@ with col1:
 
 # Column B: Poetic summary + ハイライト要約
 with col2:
-    # --- ✨ 詩的要約を先頭に表示 -----------------
-    dialogue_df = dialogue_df.rename(columns={"Text": "content"})
-    poetic = poetic_summary(dialogue_df)          # dialogue_df は既存変数を流用
-    st.markdown("*Today's poetic summary…*")
-    st.markdown(poetic)
-    st.markdown("---")                            # 区切り線（お好みで）
+    # --- ✨ Poetic summary ▶ 先頭に表示 -----------------
+    poetic = poetic_summary(dialogue_df.rename(columns={"Text": "content"}))
+
+    st.markdown("### Poetic Summary")
+    st.markdown(
+        f"""
+        <div style='background:#ffffff10;padding:16px;border-radius:8px;
+                    font-style:italic;line-height:1.6;'>
+            {poetic}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown("---")  # ↓既存の Highlight Summary につなげる
 
     # --- 既存の Highlight Summary -------------
     st.markdown("### Highlight Summary")
